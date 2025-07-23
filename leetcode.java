@@ -153,12 +153,31 @@ public class leetcode {
      */
 
     public static int[] plusOneFunc(int[] digits) {
+        int n = digits.length;
         
+        // Start from the end of the array
+        for (int i = n - 1; i >= 0; i--) {
+            // If current digit is less than 9, just increment and return
+            if (digits[i] < 9) {
+                digits[i]++;
+                return digits;
+            }
+            // If current digit is 9, set it to 0 and continue to next digit
+            digits[i] = 0;
+        }
+        
+        // If we're here, all digits were 9, we need to add a new digit at the beginning
+        int[] newNumber = new int[n + 1];
+        newNumber[0] = 1;
+        return newNumber;
     }
 
     public static void main(String[] args) {
-        int[] digits = { 1, 2, 3 };
-        plusOneFunc(digits);
+        int[] digits = {4,3,2,1};
+        int[] result= plusOneFunc(digits);
+        for (int i = 0; i < result.length; i++) {
+            System.out.println(result[i]);
+        }
     }
 
 }
