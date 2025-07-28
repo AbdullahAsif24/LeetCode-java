@@ -133,7 +133,7 @@ public class leetcode {
     }
 
     /*
-     * ================= Q3 ======================
+     * ================= Q4 ======================
      * You are given a large integer represented as an integer array digits, where
      * each digits[i] is the ith digit of the integer. The digits are ordered from
      * most significant to least significant in left-to-right order. The large
@@ -154,7 +154,7 @@ public class leetcode {
 
     public static int[] plusOneFunc(int[] digits) {
         int n = digits.length;
-        
+
         // Start from the end of the array
         for (int i = n - 1; i >= 0; i--) {
             // If current digit is less than 9, just increment and return
@@ -165,19 +165,65 @@ public class leetcode {
             // If current digit is 9, set it to 0 and continue to next digit
             digits[i] = 0;
         }
-        
+
         // If we're here, all digits were 9, we need to add a new digit at the beginning
         int[] newNumber = new int[n + 1];
         newNumber[0] = 1;
         return newNumber;
     }
 
-    public static void main(String[] args) {
-        int[] digits = {4,3,2,1};
-        int[] result= plusOneFunc(digits);
-        for (int i = 0; i < result.length; i++) {
-            System.out.println(result[i]);
+    /*
+     * ================= Q5 ======================
+     * ================= Remove Duplicates from sorted Array ======================
+     * Consider the number of unique elements of nums to be k, to get accepted, you
+     * need to do the following things:
+     * 
+     * Change the array nums such that the first k elements of nums contain the
+     * unique elements in the order they were present in nums initially. The
+     * remaining elements of nums are not important as well as the size of nums.
+     * Return k.
+     * Custom Judge:
+     * 
+     * The judge will test your solution with the following code:
+     * 
+     * int[] nums = [...]; // Input array
+     * int[] expectedNums = [...]; // The expected answer with correct length
+     * 
+     * int k = removeDuplicates(nums); // Calls your implementation
+     * 
+     * assert k == expectedNums.length;
+     * for (int i = 0; i < k; i++) {
+     * assert nums[i] == expectedNums[i];
+     * }
+     * If all assertions pass, then your solution will be accepted.
+     * 
+     * 
+     * 
+     * Example 1:
+     * 
+     * Input: nums = [1,1,2]
+     * Output: 2, nums = [1,2,_]
+     * Explanation: Your function should return k = 2, with the first two elements
+     * of nums being 1 and 2 respectively.
+     * It does not matter what you leave beyond the returned k (hence they are
+     * underscores).
+     */
+
+
+     public static int removeDuplicates(int[] nums) {
+
+        int  k = 1;
+
+        for (int i = 1; i < nums.length; i++) {
+            if (nums[i] != nums[k-1]) {
+                nums[k] = nums[i];
+                k++;
+            }
         }
+        return k;
+    }
+
+    public static void main(String[] args) {
     }
 
 }
