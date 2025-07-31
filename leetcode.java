@@ -209,13 +209,12 @@ public class leetcode {
      * underscores).
      */
 
+    public static int removeDuplicates(int[] nums) {
 
-     public static int removeDuplicates(int[] nums) {
-
-        int  k = 1;
+        int k = 1;
 
         for (int i = 1; i < nums.length; i++) {
-            if (nums[i] != nums[k-1]) {
+            if (nums[i] != nums[k - 1]) {
                 nums[k] = nums[i];
                 k++;
             }
@@ -223,7 +222,36 @@ public class leetcode {
         return k;
     }
 
+    /*
+     * ===================Search Insert Position====================
+     * Given a sorted array of distinct integers and a target value, return the
+     * index if the target is found. If not, return the index where it would be if
+     * it were inserted in order.
+     * 
+     * Input: nums = [1,3,5,6], target = 2
+     * Output: 1
+     */
+
+    public static int searchInsert(int[] nums, int target) {
+        for (int i = 0; i < nums.length  ; i++) {
+            if (nums[i] == target){
+                return i;
+            }else if (target < nums[i] ){
+                return i;
+            }
+        }
+        return nums.length;
+
+    }
+
+    
+
+
     public static void main(String[] args) {
+        int[] nums = {1,3,5,6};
+         int target = 7;
+
+         System.out.println(searchInsert(nums, target));
     }
 
 }
