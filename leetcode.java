@@ -210,7 +210,6 @@ public class leetcode {
      */
 
     public static int removeDuplicates(int[] nums) {
-
         int k = 1;
 
         for (int i = 1; i < nums.length; i++) {
@@ -233,25 +232,44 @@ public class leetcode {
      */
 
     public static int searchInsert(int[] nums, int target) {
-        for (int i = 0; i < nums.length  ; i++) {
-            if (nums[i] == target){
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] == target) {
                 return i;
-            }else if (target < nums[i] ){
+            } else if (target < nums[i]) {
                 return i;
             }
         }
         return nums.length;
-
     }
 
-    
+    /*
+     * ====================Find the Index of the First Occurrence in a String===============
+     * Given two strings needle and haystack, return the index of the first
+     * occurrence of needle in haystack, or -1 if needle is not part of haystack.
+     * 
+     * 
+     * 
+     * Example 1:
+     * 
+     * Input: haystack = "sadbutsad", needle = "sad"
+     * Output: 0
+     * Explanation: "sad" occurs at index 0 and 6.
+     * The first occurrence is at index 0, so we return 0.
+     */
 
+    public static int strStr(String haystack, String needle) {
+        for (int i = 0, j = needle.length(); j <= haystack.length(); i++, j++) {
+            if (haystack.substring(i, j).equals(needle)) {
+                return i;
+            }
+        }
+        return -1;
+    }
 
     public static void main(String[] args) {
-        int[] nums = {1,3,5,6};
-         int target = 7;
+        String haystack = "leetcode", needle = "leeto";
 
-         System.out.println(searchInsert(nums, target));
+        System.out.println(strStr(haystack, needle));
     }
 
 }
