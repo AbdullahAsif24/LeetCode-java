@@ -243,7 +243,8 @@ public class leetcode {
     }
 
     /*
-     * ====================Find the Index of the First Occurrence in a String===============
+     * ====================Find the Index of the First Occurrence in a
+     * String===============
      * Given two strings needle and haystack, return the index of the first
      * occurrence of needle in haystack, or -1 if needle is not part of haystack.
      * 
@@ -266,10 +267,42 @@ public class leetcode {
         return -1;
     }
 
+    /*
+     * ===========================Sqrt(x)======================
+     * Given a non-negative integer x, return the square root of x rounded down to
+     * the nearest integer. The returned integer should be non-negative as well.
+     * 
+     * You must not use any built-in exponent function or operator.
+     * 
+     * For example, do not use pow(x, 0.5) in c++ or x ** 0.5 in python.
+     * 
+     * 
+     * Example 1:
+     * 
+     * Input: x = 4
+     * Output: 2
+     * Explanation: The square root of 4 is 2, so we return 2.
+     */
+
+    public static int mySqrt(int x) {
+        if (x < 2)
+            return x; // covers 0 and 1
+
+        int i = 1;
+        while (i <= x / i) { // avoid overflow by comparing with x / i instead of i*i
+            if (i * i == x) {
+                return i;
+            }
+            i++;
+        }
+        return i - 1; // floor of sqrt
+    }
+
+    
+
     public static void main(String[] args) {
         String haystack = "leetcode", needle = "leeto";
 
         System.out.println(strStr(haystack, needle));
     }
-
 }
