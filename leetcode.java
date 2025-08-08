@@ -361,6 +361,7 @@ public class leetcode {
      */
 
     public static int lengthOfLastWord(String s) {
+        s.trim();
         String[] str = s.split(" ");
         String fin = str[str.length - 1];
         return fin.length();
