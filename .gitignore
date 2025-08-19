@@ -1,0 +1,36 @@
+# IntelliJ IDEA project files
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# Ignore IntelliJ module files anywhere (even in subfolders)
+**/*.iml
+
+# Build output folders
+out/
+build/
+target/
+bin/
+classes/
+
+# Compiled class files
+*.class
+
+# Logs
+*.log
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Gradle
+.gradle/
+build/
+
+# Maven
+.mvn/
+target/
+
+# VS Code (if someone opens with it)
+.vscode/
