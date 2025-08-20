@@ -468,9 +468,29 @@ Explanation: 27 = 33
         return true;
     }
 
+    public static String mergeAlternately(String word1, String word2) {
+        String result = "";
+
+        int n = word1.length()>word2.length()?word1.length():word2.length();
+        for (int i = 0; i < n; i++) {
+
+            if (i > word1.length()-1 ){
+                result += word2.substring(i);
+                return result;
+            }
+            else if (i > word2.length()-1){
+                result += word1.substring(i);
+                return result;
+            }
+            result += word1.split("")[i] + word2.split("")[i];
+        }
+
+        return result;
+    }
+
     public static void main(String[] args) {
 
-        System.out.println(isPalindrome(5256));
+        System.out.println(mergeAlternately("abc", "pqr"));
 
     }
 }
