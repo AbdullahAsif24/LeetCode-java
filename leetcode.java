@@ -285,8 +285,7 @@ public class leetcode {
      */
 
     public static int mySqrt(int x) {
-        if (x < 2)
-            return x; // covers 0 and 1
+        if (x < 2) return x; // covers 0 and 1
 
         int i = 1;
         while (i <= x / i) { // avoid overflow by comparing with x / i instead of i*i
@@ -388,10 +387,8 @@ public class leetcode {
 
         while (i >= 0 || j >= 0 || carry > 0) {
             int sum = carry;
-            if (i >= 0)
-                sum += a.charAt(i--) - '0';
-            if (j >= 0)
-                sum += b.charAt(j--) - '0';
+            if (i >= 0) sum += a.charAt(i--) - '0';
+            if (j >= 0) sum += b.charAt(j--) - '0';
             result.append(sum % 2);
             carry = sum / 2;
         }
@@ -451,9 +448,29 @@ Explanation: 27 = 33
         return n > 0 && maxPowerOf3 % n == 0;
     }
 
+    /*
+    ----------------------- Palindrome Number --------------------
+    * Given an integer x, return true if x is a palindrome, and false otherwise.
+
+
+     * */
+
+    public static boolean isPalindrome(int x) {
+        String num = Integer.toString(x);
+
+        for (int i = 0; i < num.length()/2; i++) {
+            if (num.charAt(i) != num.charAt(num.length()-1-i)){
+                return false;
+            }
+        }
+
+
+        return true;
+    }
+
     public static void main(String[] args) {
 
-        System.out.println(isPowerOfThree(5));
+        System.out.println(isPalindrome(5256));
 
     }
 }
