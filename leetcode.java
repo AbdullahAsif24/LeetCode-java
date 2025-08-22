@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Stack;
 
@@ -488,9 +489,46 @@ Explanation: 27 = 33
         return result;
     }
 
+
+    /*
+     * ------------------- Longest Common Prefix -----------------------
+     * 
+     * Write a function to find the longest common prefix string amongst an array of
+     * strings.
+     * 
+     * If there is no common prefix, return an empty string "".
+     * 
+     * Example 1:
+     * 
+     * Input: strs = ["flower","flow","flight"]
+     * Output: "fl"
+     */
+
+    public static String longestCommonPrefix(String[] strs) {
+        Arrays.sort(strs);
+
+        String str1 = strs[0];
+        String str2 = strs[strs.length-1];
+        int idx = 0;
+        String subStr = "";
+
+        while (idx < str1.length() && idx < str2.length()) {
+            if (str1.charAt(idx) == str2.charAt(idx) ) {
+                subStr += str1.charAt(idx);
+                idx++;
+            }else {
+                break;
+            }
+        }
+
+        return subStr;
+    }
+
     public static void main(String[] args) {
 
-        System.out.println(mergeAlternately("abc", "pqr"));
+        String[] strs = {"flower","flow","flight"};
+        System.out.println(longestCommonPrefix(strs));
+        
 
     }
 }

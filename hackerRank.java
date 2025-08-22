@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 
 public class hackerRank {
@@ -6,7 +9,6 @@ public class hackerRank {
         String smallest = "";
         String largest = "";
 
-        
         // 'smallest' must be the lexicographically smallest substring of length 'k'
         // 'largest' must be the lexicographically largest substring of length 'k'
 
@@ -58,7 +60,10 @@ public class hackerRank {
         }
     }
 
+    
+
     public static void main(String[] args) {
-        isPalindromeFunc();
+        
+
     }
 }
