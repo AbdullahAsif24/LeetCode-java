@@ -27,11 +27,11 @@ public class leetcode {
         for (int i = 0; i < nums.length; i++) {
             for (int j = i + 1; j < nums.length; j++) {
                 if (nums[i] + nums[j] == target) {
-                    return new int[]{i, j};
+                    return new int[] { i, j };
                 }
             }
         }
-        return new int[]{};
+        return new int[] {};
     }
 
     /*
@@ -286,7 +286,8 @@ public class leetcode {
      */
 
     public static int mySqrt(int x) {
-        if (x < 2) return x; // covers 0 and 1
+        if (x < 2)
+            return x; // covers 0 and 1
 
         int i = 1;
         while (i <= x / i) { // avoid overflow by comparing with x / i instead of i*i
@@ -388,8 +389,10 @@ public class leetcode {
 
         while (i >= 0 || j >= 0 || carry > 0) {
             int sum = carry;
-            if (i >= 0) sum += a.charAt(i--) - '0';
-            if (j >= 0) sum += b.charAt(j--) - '0';
+            if (i >= 0)
+                sum += a.charAt(i--) - '0';
+            if (j >= 0)
+                sum += b.charAt(j--) - '0';
             result.append(sum % 2);
             carry = sum / 2;
         }
@@ -428,20 +431,22 @@ public class leetcode {
     }
 
     /*
-    *
-
-    ============================ Power of Three ======================
-
-    Given an integer n, return true if it is a power of three. Otherwise, return false.
-
-    An integer n is a power of three, if there exists an integer x such that n == 3x.
-    *
-    * Example 1:
-
-Input: n = 27
-Output: true
-Explanation: 27 = 33
-    * */
+     *
+     * 
+     * ============================ Power of Three ======================
+     * 
+     * Given an integer n, return true if it is a power of three. Otherwise, return
+     * false.
+     * 
+     * An integer n is a power of three, if there exists an integer x such that n ==
+     * 3x.
+     *
+     * Example 1:
+     * 
+     * Input: n = 27
+     * Output: true
+     * Explanation: 27 = 33
+     */
 
     public static boolean isPowerOfThree(int n) {
 
@@ -450,21 +455,20 @@ Explanation: 27 = 33
     }
 
     /*
-    ----------------------- Palindrome Number --------------------
-    * Given an integer x, return true if x is a palindrome, and false otherwise.
-
-
-     * */
+     * ----------------------- Palindrome Number --------------------
+     * Given an integer x, return true if x is a palindrome, and false otherwise.
+     * 
+     * 
+     */
 
     public static boolean isPalindrome(int x) {
         String num = Integer.toString(x);
 
-        for (int i = 0; i < num.length()/2; i++) {
-            if (num.charAt(i) != num.charAt(num.length()-1-i)){
+        for (int i = 0; i < num.length() / 2; i++) {
+            if (num.charAt(i) != num.charAt(num.length() - 1 - i)) {
                 return false;
             }
         }
-
 
         return true;
     }
@@ -472,14 +476,13 @@ Explanation: 27 = 33
     public static String mergeAlternately(String word1, String word2) {
         String result = "";
 
-        int n = word1.length()>word2.length()?word1.length():word2.length();
+        int n = word1.length() > word2.length() ? word1.length() : word2.length();
         for (int i = 0; i < n; i++) {
 
-            if (i > word1.length()-1 ){
+            if (i > word1.length() - 1) {
                 result += word2.substring(i);
                 return result;
-            }
-            else if (i > word2.length()-1){
+            } else if (i > word2.length() - 1) {
                 result += word1.substring(i);
                 return result;
             }
@@ -488,7 +491,6 @@ Explanation: 27 = 33
 
         return result;
     }
-
 
     /*
      * ------------------- Longest Common Prefix -----------------------
@@ -508,15 +510,15 @@ Explanation: 27 = 33
         Arrays.sort(strs);
 
         String str1 = strs[0];
-        String str2 = strs[strs.length-1];
+        String str2 = strs[strs.length - 1];
         int idx = 0;
         String subStr = "";
 
         while (idx < str1.length() && idx < str2.length()) {
-            if (str1.charAt(idx) == str2.charAt(idx) ) {
+            if (str1.charAt(idx) == str2.charAt(idx)) {
                 subStr += str1.charAt(idx);
                 idx++;
-            }else {
+            } else {
                 break;
             }
         }
@@ -524,11 +526,42 @@ Explanation: 27 = 33
         return subStr;
     }
 
+    /*
+     * ---------------------- Climbing Stairs ----------------
+     * You are climbing a staircase. It takes n steps to reach the top.
+     * 
+     * Each time you can either climb 1 or 2 steps. In how many distinct ways can
+     * you climb to the top?
+     * 
+     * Example 2:
+     * 
+     * Input: n = 3
+     * Output: 3
+     * Explanation: There are three ways to climb to the top.
+     * 1. 1 step + 1 step + 1 step
+     * 2. 1 step + 2 steps
+     * 3. 2 steps + 1 step
+     */
+
+     public static int climbStairs(int n) {
+
+        if(n<4) return n;
+
+        int prev1 = 2;
+        int prev2 = 3;
+        int ans = 0;
+        for(int i = 0; i < n -3 ; i++){
+            ans = prev1+ prev2;
+            prev1 = prev2;
+            prev2 = ans;
+        }
+        return ans;
+        
+    }
+
     public static void main(String[] args) {
 
-        String[] strs = {"flower","flow","flight"}; 
-        System.out.println(longestCommonPrefix(strs));
-        
+        System.out.println(climbStairs(5));
 
     }
 }
